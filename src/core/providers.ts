@@ -34,6 +34,19 @@ export const BUILTIN_PROVIDERS: Record<BuiltinProvider, AiProviderInfo> = {
     models: ["gpt-4o-mini", "gpt-5-nano"],
     defaultModel: "gpt-4o-mini",
   },
+  deepseek: {
+    id: "deepseek",
+    label: "DeepSeek",
+    baseURL: "https://api.deepseek.com",
+    sdkType: "openai",
+    models: [
+      "deepseek-v4-flash",
+      "deepseek-v4-pro",
+      "deepseek-chat",
+      "deepseek-reasoner",
+    ],
+    defaultModel: "deepseek-v4-flash",
+  },
 };
 
 /** Custom Provider 信息模板 */

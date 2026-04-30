@@ -2,7 +2,12 @@
 export type SdkType = "anthropic" | "openai";
 
 /** 内置 Provider ID */
-export type BuiltinProvider = "anthropic" | "minimax" | "glm" | "aihubmix";
+export type BuiltinProvider =
+  | "anthropic"
+  | "minimax"
+  | "glm"
+  | "aihubmix"
+  | "deepseek";
 
 /** 所有 Provider ID（含 custom） */
 export type AiProvider = BuiltinProvider | "custom" | (string & {});

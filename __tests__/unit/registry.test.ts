@@ -11,20 +11,21 @@ describe("AiProviderRegistry", () => {
       expect(registry.get("minimax")).toEqual(BUILTIN_PROVIDERS.minimax);
       expect(registry.get("glm")).toEqual(BUILTIN_PROVIDERS.glm);
       expect(registry.get("aihubmix")).toEqual(BUILTIN_PROVIDERS.aihubmix);
+      expect(registry.get("deepseek")).toEqual(BUILTIN_PROVIDERS.deepseek);
     });
 
     test("accepts custom providers in constructor", () => {
       const customProvider: AiProviderInfo = {
-        id: "deepseek",
-        label: "DeepSeek",
-        baseURL: "https://api.deepseek.com/v1",
+        id: "qwen",
+        label: "Qwen",
+        baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
         sdkType: "openai",
-        models: ["deepseek-chat"],
-        defaultModel: "deepseek-chat",
+        models: ["qwen-max"],
+        defaultModel: "qwen-max",
       };
 
-      const registry = new AiProviderRegistry({ deepseek: customProvider });
-      expect(registry.get("deepseek")).toEqual(customProvider);
+      const registry = new AiProviderRegistry({ qwen: customProvider });
+      expect(registry.get("qwen")).toEqual(customProvider);
       // Should still have builtins
       expect(registry.get("anthropic")).toBeDefined();
     });
@@ -48,7 +49,7 @@ describe("AiProviderRegistry", () => {
       const registry = new AiProviderRegistry();
       const all = registry.getAll();
       expect(Array.isArray(all)).toBe(true);
-      expect(all.length).toBe(4); // 4 builtins
+      expect(all.length).toBe(5); // 5 builtins
     });
 
     test("includes custom providers", () => {
@@ -62,7 +63,7 @@ describe("AiProviderRegistry", () => {
       };
       const registry = new AiProviderRegistry({ test: customProvider });
       const all = registry.getAll();
-      expect(all.length).toBe(5);
+      expect(all.length).toBe(6);
       expect(all.some((p) => p.id === "test")).toBe(true);
     });
   });
@@ -75,6 +76,7 @@ describe("AiProviderRegistry", () => {
       expect(ids).toContain("minimax");
       expect(ids).toContain("glm");
       expect(ids).toContain("aihubmix");
+      expect(ids).toContain("deepseek");
       expect(ids).toContain("custom");
     });
   });

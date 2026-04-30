@@ -20,7 +20,7 @@ A unified AI provider integration library that supports multiple LLM providers (
 
 ## Features
 
-- **Multi-Provider Support** — Built-in support for Anthropic, MiniMax, GLM (Zhipu), AIHubMix, plus custom URL-based providers
+- **Multi-Provider Support** — Built-in support for Anthropic, MiniMax, GLM (Zhipu), AIHubMix, DeepSeek, plus custom URL-based providers
 - **Framework Agnostic** — Works with Next.js, Vite, vinext, and other React frameworks
 - **React Components** — Ready-to-use settings panel with provider selection, model picker, and API key management
 - **Storage Adapter Pattern** — Bring your own storage (API routes, database) via simple interface
@@ -213,6 +213,7 @@ import { resolveAiConfig, createAiModel } from "@nocoo/next-ai/server-next";
 | MiniMax | `minimax` | anthropic | MiniMax-M2.5 |
 | GLM (Zhipu) | `glm` | anthropic | glm-5 |
 | AIHubMix | `aihubmix` | openai | gpt-4o-mini |
+| DeepSeek | `deepseek` | openai | deepseek-v4-flash |
 | Custom | `custom` | configurable | configurable |
 
 ### Custom Provider Registration

@@ -304,6 +304,7 @@ describe("isValidProvider", () => {
     expect(isValidProvider("minimax")).toBe(true);
     expect(isValidProvider("glm")).toBe(true);
     expect(isValidProvider("aihubmix")).toBe(true);
+    expect(isValidProvider("deepseek")).toBe(true);
   });
 
   test("returns true for custom", () => {
