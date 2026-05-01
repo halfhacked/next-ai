@@ -16,15 +16,18 @@ mock.module("@ai-sdk/anthropic", () => ({
   }),
 }));
 
-mock.module("@ai-sdk/openai", () => ({
-  createOpenAI: mock((opts: { baseURL: string; apiKey: string }) => {
-    const clientFn = mock((model: string) => ({
-      type: "openai",
-      model,
-      ...opts,
-    }));
-    return clientFn;
-  }),
+mock.module("@ai-sdk/openai-compatible", () => ({
+  createOpenAICompatible: mock(
+    (opts: { name: string; baseURL: string; apiKey: string }) => {
+      const clientFn = mock((model: string) => ({
+        type: "openai",
+        model,
+        baseURL: opts.baseURL,
+        apiKey: opts.apiKey,
+      }));
+      return clientFn;
+    },
+  ),
 }));
 
 mock.module("ai", () => ({

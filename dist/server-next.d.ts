@@ -1,7 +1,6 @@
-import * as _ai_sdk_provider from '@ai-sdk/provider';
 import * as _ai_sdk_anthropic from '@ai-sdk/anthropic';
-import * as _ai_sdk_openai from '@ai-sdk/openai';
-import { ModelMessage } from 'ai';
+import * as _ai_sdk_openai_compatible from '@ai-sdk/openai-compatible';
+import { LanguageModel, ModelMessage } from 'ai';
 
 /** SDK 协议类型 */
 type SdkType = "anthropic" | "openai";
@@ -45,10 +44,10 @@ interface AiConfigError {
     message: string;
 }
 
-/** 创建 AI 客户端（根据 sdkType 选择 Anthropic 或 OpenAI） */
-declare function createAiClient(config: AiConfig): _ai_sdk_openai.OpenAIProvider | _ai_sdk_anthropic.AnthropicProvider;
+/** 创建 AI 客户端（根据 sdkType 选择 Anthropic 或 OpenAI-compatible） */
+declare function createAiClient(config: AiConfig): _ai_sdk_openai_compatible.OpenAICompatibleProvider<string, string, string, string> | _ai_sdk_anthropic.AnthropicProvider;
 /** 创建 AI 模型实例（用于 Vercel AI SDK） */
-declare function createAiModel(config: AiConfig): _ai_sdk_provider.LanguageModelV3;
+declare function createAiModel(config: AiConfig): LanguageModel;
 
 /** AI Helper 选项 */
 interface AiHelperOptions {

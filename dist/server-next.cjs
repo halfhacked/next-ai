@@ -37,11 +37,11 @@ var import_server_only = require("server-only");
 
 // src/server/client.ts
 var import_anthropic = require("@ai-sdk/anthropic");
-var import_openai = require("@ai-sdk/openai");
+var import_openai_compatible = require("@ai-sdk/openai-compatible");
 function createAiClient(config) {
-  const { baseURL, apiKey, sdkType } = config;
+  const { provider, baseURL, apiKey, sdkType } = config;
   if (sdkType === "openai") {
-    return (0, import_openai.createOpenAI)({ baseURL, apiKey });
+    return (0, import_openai_compatible.createOpenAICompatible)({ name: provider, baseURL, apiKey });
   }
   return (0, import_anthropic.createAnthropic)({ baseURL, apiKey });
 }
