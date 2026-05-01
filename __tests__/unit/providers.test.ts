@@ -11,6 +11,7 @@ describe("BUILTIN_PROVIDERS", () => {
     "minimax",
     "glm",
     "aihubmix",
+    "deepseek",
   ];
 
   test("contains all expected providers", () => {
@@ -43,6 +44,15 @@ describe("BUILTIN_PROVIDERS", () => {
   test("aihubmix provider uses openai sdk", () => {
     const aihubmix = BUILTIN_PROVIDERS.aihubmix;
     expect(aihubmix.sdkType).toBe("openai");
+  });
+
+  test("deepseek provider has correct configuration", () => {
+    const deepseek = BUILTIN_PROVIDERS.deepseek;
+    expect(deepseek.sdkType).toBe("openai");
+    expect(deepseek.baseURL).toBe("https://api.deepseek.com");
+    expect(deepseek.models).toContain("deepseek-v4-flash");
+    expect(deepseek.models).toContain("deepseek-v4-pro");
+    expect(deepseek.defaultModel).toBe("deepseek-v4-flash");
   });
 });
 
